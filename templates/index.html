@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Placement Prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <h1>Student Placement Prediction</h1>
+  <p class="subtitle">Enter student details to predict placement outcome</p>
+
+  <form id="predict-form">
+    <div class="grid">
+      {% for feat in numeric_features %}
+      <div class="field">
+        <label for="{{ feat }}">{{ feat }}</label>
+        <input type="number" step="any" id="{{ feat }}" name="{{ feat }}" required>
+      </div>
+      {% endfor %}
+
+      {% for feat in binary_features %}
+      <div class="field">
+        <label for="{{ feat }}">{{ feat }}</label>
+        <select id="{{ feat }}" name="{{ feat }}" required>
+          {% for opt in binary_options %}
+          <option value="{{ opt }}">{{ opt }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {% endfor %}
+    </div>
+
+    <button type="submit">Predict Placement</button>
+  </form>
+
+  <div id="result" class="result hidden"></div>
+  <div id="error" class="error hidden"></div>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

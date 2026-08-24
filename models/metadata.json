@@ -1,0 +1,150 @@
+{
+  "feature_order": [
+    "CGPA",
+    "Major Projects",
+    "Workshops/Certifications",
+    "Mini Projects",
+    "Skills",
+    "Communication Skill Rating",
+    "12th Percentage",
+    "10th Percentage",
+    "backlogs",
+    "Internship",
+    "Hackathon"
+  ],
+  "numeric_features": [
+    "CGPA",
+    "Major Projects",
+    "Workshops/Certifications",
+    "Mini Projects",
+    "Skills",
+    "Communication Skill Rating",
+    "12th Percentage",
+    "10th Percentage",
+    "backlogs"
+  ],
+  "binary_features": [
+    "Internship",
+    "Hackathon"
+  ],
+  "binary_map": {
+    "No": 0,
+    "Yes": 1
+  },
+  "target_classes": [
+    "NotPlaced",
+    "Placed"
+  ],
+  "best_model_name": "Gradient Boosting (baseline)",
+  "metrics": {
+    "train_accuracy": 0.94725,
+    "test_accuracy": 0.9465,
+    "precision": 0.9346793349168646,
+    "recall": 0.9380214541120382,
+    "f1": 0.9363474122546104,
+    "roc_auc": 0.9905089833576127,
+    "confusion_matrix": [
+      [
+        1106,
+        55
+      ],
+      [
+        52,
+        787
+      ]
+    ]
+  },
+  "dataset_size": 10000,
+  "num_placed": 4197,
+  "num_not_placed": 5803,
+  "feature_importance": {
+    "backlogs": 0.8226,
+    "CGPA": 0.1183,
+    "Skills": 0.0251,
+    "10th Percentage": 0.0065,
+    "Workshops/Certifications": 0.0064,
+    "Hackathon": 0.0062,
+    "12th Percentage": 0.0051,
+    "Internship": 0.0044,
+    "Communication Skill Rating": 0.0025,
+    "Mini Projects": 0.0025,
+    "Major Projects": 0.0002
+  },
+  "model_comparison": [
+    {
+      "Model": "Gradient Boosting",
+      "Train Acc": 0.9472,
+      "Test Acc": 0.9465,
+      "Precision": 0.9347,
+      "Recall": 0.938,
+      "F1": 0.9363,
+      "ROC-AUC": 0.9905
+    },
+    {
+      "Model": "Random Forest",
+      "Train Acc": 0.9996,
+      "Test Acc": 0.944,
+      "Precision": 0.9353,
+      "Recall": 0.9309,
+      "F1": 0.9331,
+      "ROC-AUC": 0.9856
+    },
+    {
+      "Model": "XGBoost",
+      "Train Acc": 0.9892,
+      "Test Acc": 0.938,
+      "Precision": 0.9133,
+      "Recall": 0.9416,
+      "F1": 0.9272,
+      "ROC-AUC": 0.9892
+    },
+    {
+      "Model": "Support Vector Machine",
+      "Train Acc": 0.9349,
+      "Test Acc": 0.931,
+      "Precision": 0.8934,
+      "Recall": 0.9487,
+      "F1": 0.9202,
+      "ROC-AUC": 0.9836
+    },
+    {
+      "Model": "Logistic Regression",
+      "Train Acc": 0.9245,
+      "Test Acc": 0.9265,
+      "Precision": 0.8879,
+      "Recall": 0.944,
+      "F1": 0.9151,
+      "ROC-AUC": 0.9809
+    },
+    {
+      "Model": "Decision Tree",
+      "Train Acc": 0.9996,
+      "Test Acc": 0.926,
+      "Precision": 0.9168,
+      "Recall": 0.9058,
+      "F1": 0.9113,
+      "ROC-AUC": 0.9232
+    },
+    {
+      "Model": "K-Nearest Neighbors",
+      "Train Acc": 0.9176,
+      "Test Acc": 0.885,
+      "Precision": 0.857,
+      "Recall": 0.8713,
+      "F1": 0.8641,
+      "ROC-AUC": 0.9499
+    }
+  ],
+  "tuning_summary": [
+    {
+      "Model": "Gradient Boosting",
+      "Baseline F1": 0.9363474122546104,
+      "Tuned F1": 0.931980906921241
+    },
+    {
+      "Model": "Random Forest",
+      "Baseline F1": 0.9330943847072879,
+      "Tuned F1": 0.9324644549763034
+    }
+  ]
+}

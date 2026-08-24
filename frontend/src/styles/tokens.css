@@ -1,0 +1,77 @@
+/**
+ * Design tokens — source of truth is docs/DESIGN_SYSTEM.html.
+ * Dark is the default, primary experience; light is a secondary,
+ * fully-specified theme (not a naive inversion — see DESIGN_SYSTEM §02).
+ *
+ * RGB triplets (not hex) so Tailwind's `rgb(var(--x) / <alpha-value>)`
+ * pattern can apply opacity modifiers (e.g. bg-bg-elevated/50) to any token.
+ */
+
+:root {
+  /* ---- Light theme (fallback / explicit data-theme="light") ---- */
+  --bg-base: 247 248 250; /* #F7F8FA */
+  --bg-elevated: 255 255 255; /* #FFFFFF */
+  --bg-elevated-2: 238 240 244; /* #EEF0F4 */
+  --bg-elevated-3: 228 231 237; /* #E4E7ED */
+
+  --text-primary: 18 20 30; /* #12141E */
+  --text-secondary: 86 90 104; /* #565A68 */
+  --text-muted: 139 143 160; /* #8B8FA0 */
+
+  --accent-soft: 233 233 253; /* #E9E9FD */
+  --accent-ink: 58 61 190; /* #3A3DBE */
+
+  --font-display: "Neue Montreal", "General Sans", "Inter Display", -apple-system,
+    "Segoe UI", sans-serif;
+  --font-body: -apple-system, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* ---- Dark theme — default whenever no explicit light choice is stamped ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg-base: 5 6 10; /* #05060A */
+    --bg-elevated: 11 13 20; /* #0B0D14 */
+    --bg-elevated-2: 18 20 30; /* #12141E */
+    --bg-elevated-3: 26 29 41; /* #1A1D29 */
+
+    --text-primary: 245 246 250; /* #F5F6FA */
+    --text-secondary: 160 163 177; /* #A0A3B1 */
+    --text-muted: 107 110 126; /* #6B6E7E */
+
+    --accent-soft: 35 36 74; /* #23244A */
+    --accent-ink: 171 173 255; /* #ABADFF */
+  }
+}
+
+/* ---- Explicit dark choice always wins, regardless of OS setting ---- */
+:root[data-theme="dark"] {
+  --bg-base: 5 6 10;
+  --bg-elevated: 11 13 20;
+  --bg-elevated-2: 18 20 30;
+  --bg-elevated-3: 26 29 41;
+
+  --text-primary: 245 246 250;
+  --text-secondary: 160 163 177;
+  --text-muted: 107 110 126;
+
+  --accent-soft: 35 36 74;
+  --accent-ink: 171 173 255;
+}
+
+/* Border tokens are theme-aware but expressed as literal rgba() since they're
+   always applied over a known bg — kept simple rather than triple-defined. */
+:root {
+  --border-subtle-rgba: rgba(0, 0, 0, 0.08);
+  --border-strong-rgba: rgba(0, 0, 0, 0.16);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --border-subtle-rgba: rgba(255, 255, 255, 0.08);
+    --border-strong-rgba: rgba(255, 255, 255, 0.16);
+  }
+}
+:root[data-theme="dark"] {
+  --border-subtle-rgba: rgba(255, 255, 255, 0.08);
+  --border-strong-rgba: rgba(255, 255, 255, 0.16);
+}

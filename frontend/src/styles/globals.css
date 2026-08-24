@@ -1,0 +1,56 @@
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border-subtle;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark light;
+  }
+
+  body {
+    @apply bg-bg-base text-text-primary font-body antialiased;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  ::selection {
+    @apply bg-accent-soft text-accent-ink;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  /* Reduced motion: collapse all animation/transition to near-instant.
+     Individual components still branch on usePrefersReducedMotion() for
+     structural differences (e.g. skip 3D scene, skip scroll-pin), but this
+     is the blanket CSS-level guarantee nothing animates by accident. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
